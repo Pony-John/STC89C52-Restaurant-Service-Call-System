@@ -1,0 +1,240 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        06/09/2017  17:55:12  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\软件\KEIL 5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\51_uart_receive.obj, .\Objects\51_uart_send.obj TO .\Objec
+>> ts\从机New PRINT (.\Listings\从机New.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\51_uart_receive.obj (51_UART_RECEIVE)
+  .\Objects\51_uart_send.obj (51_UART_SEND)
+  D:\软件\KEIL 5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\软件\KEIL 5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\从机New (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?51_UART_RECEIVE
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0024H     UNIT         ?PR?MAIN?MAIN
+            CODE    0027H     0021H     UNIT         ?PR?_DELAY_1MS?MAIN
+            CODE    0048H     0018H     UNIT         ?PR?UARTINIT_1?51_UART_RECEIVE
+            CODE    0060H     0014H     UNIT         ?PR?COM3_INT?51_UART_RECEIVE
+            CODE    0074H     000EH     UNIT         ?PR?_SEND_1?51_UART_SEND
+            CODE    0082H     0007H     UNIT         ?C_INITSEG
+                    0089H     0002H                  *** GAP ***
+            CODE    008BH     0003H     ABSOLUTE     
+            CODE    008EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    011AH     000DH     UNIT         ?PR?RECEIVE?51_UART_RECEIVE
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\从机New (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?UARTINIT_1?51_UART_RECEIVE
+  +--> ?PR?_DELAY_1MS?MAIN
+  +--> ?PR?_SEND_1?51_UART_SEND
+  +--> ?PR?RECEIVE?51_UART_RECEIVE
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/09/2017  17:55:12  PAGE 2
+
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\从机New (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0093H         PUBLIC        P0M1
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  C:0027H         PUBLIC        _delay_1ms
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  C:0003H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  B:0080H.4       PUBLIC        P04
+  D:0088H         PUBLIC        TCON
+  B:0080H.6       PUBLIC        P06
+  D:00D0H         PUBLIC        PSW
+  D:0094H         PUBLIC        P0M0
+  -------         PROC          MAIN
+  C:0003H         LINE#         18
+  C:0003H         LINE#         19
+  C:0003H         LINE#         20
+  C:0006H         LINE#         21
+  C:0009H         LINE#         22
+  C:000BH         LINE#         23
+  C:000BH         LINE#         24
+  C:000BH         LINE#         25
+  C:000EH         LINE#         26
+  C:000EH         LINE#         27
+  C:0015H         LINE#         28
+  C:0018H         LINE#         29
+  C:0018H         LINE#         30
+  C:001AH         LINE#         31
+  C:001FH         LINE#         32
+  C:0022H         LINE#         33
+  C:0022H         LINE#         34
+  C:0022H         LINE#         35
+  C:0025H         LINE#         36
+  -------         ENDPROC       MAIN
+  -------         PROC          _DELAY_1MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0004H         SYMBOL        a
+  D:0002H         SYMBOL        b
+  -------         ENDDO         
+  C:0027H         LINE#         38
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/09/2017  17:55:12  PAGE 3
+
+
+  C:0027H         LINE#         39
+  C:0027H         LINE#         41
+  C:0031H         LINE#         42
+  C:0031H         LINE#         43
+  C:0034H         LINE#         44
+  C:0034H         LINE#         45
+  C:0034H         LINE#         46
+  C:0035H         LINE#         47
+  C:003AH         LINE#         48
+  C:0040H         LINE#         49
+  C:0047H         LINE#         50
+  -------         ENDPROC       _DELAY_1MS
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        51_UART_RECEIVE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  B:00A8H.7       PUBLIC        EA
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  D:0098H         PUBLIC        SCON
+  B:0080H.4       PUBLIC        P04
+  D:0088H         PUBLIC        TCON
+  D:00AFH         PUBLIC        IE2
+  C:0048H         PUBLIC        UartInit_1
+  D:00D4H         PUBLIC        T3H
+  D:0008H         PUBLIC        num
+  D:00D5H         PUBLIC        T3L
+  D:00D1H         PUBLIC        T4T3M
+  C:0060H         PUBLIC        Com3_Int
+  D:00ADH         PUBLIC        S3BUF
+  C:011AH         PUBLIC        receive
+  D:00ACH         PUBLIC        S3CON
+  D:0009H         PUBLIC        uart_receive_number
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          UARTINIT_1
+  C:0048H         LINE#         23
+  C:0048H         LINE#         24
+  C:0048H         LINE#         26
+  C:004BH         LINE#         27
+  C:004EH         LINE#         28
+  C:0051H         LINE#         29
+  C:0054H         LINE#         30
+  C:0057H         LINE#         31
+  C:005AH         LINE#         32
+  C:005DH         LINE#         33
+  C:005FH         LINE#         35
+  -------         ENDPROC       UARTINIT_1
+  -------         PROC          COM3_INT
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/09/2017  17:55:12  PAGE 4
+
+
+  C:0060H         LINE#         42
+  C:0062H         LINE#         44
+  C:0064H         LINE#         45
+  C:0069H         LINE#         46
+  C:006CH         LINE#         47
+  C:006FH         LINE#         48
+  C:006FH         LINE#         50
+  C:0071H         LINE#         51
+  -------         ENDPROC       COM3_INT
+  -------         PROC          RECEIVE
+  C:011AH         LINE#         53
+  C:011AH         LINE#         54
+  C:011AH         LINE#         55
+  C:011EH         LINE#         56
+  C:011EH         LINE#         57
+  C:0121H         LINE#         58
+  C:0123H         LINE#         59
+  C:0126H         LINE#         61
+  C:0126H         LINE#         62
+  -------         ENDPROC       RECEIVE
+  -------         ENDMOD        51_UART_RECEIVE
+
+  -------         MODULE        51_UART_SEND
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0074H         PUBLIC        _send_1
+  D:00ADH         PUBLIC        S3BUF
+  D:00ACH         PUBLIC        S3CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _SEND_1
+  D:0007H         SYMBOL        p
+  C:0074H         LINE#         12
+  C:0074H         LINE#         13
+  C:0074H         LINE#         14
+  C:0076H         LINE#         15
+  C:007BH         LINE#         16
+  C:007CH         LINE#         17
+  C:007EH         LINE#         18
+  C:0081H         LINE#         19
+  -------         ENDPROC       _SEND_1
+  -------         ENDMOD        51_UART_SEND
+
+Program Size: data=11.0 xdata=0 code=293
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

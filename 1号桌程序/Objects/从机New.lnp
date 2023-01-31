@@ -1,0 +1,5 @@
+".\Objects\main.obj",
+".\Objects\51_uart_receive.obj",
+".\Objects\51_uart_send.obj" 
+TO ".\Objects\从机New" 
+PRINT(".\Listings\从机New.m51") RAMSIZE(256) 
