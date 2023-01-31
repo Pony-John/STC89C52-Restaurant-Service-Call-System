@@ -1,0 +1,145 @@
+C51 COMPILER V9.56.0.0   12864                                                             06/04/2018 19:10:36 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE 12864
+OBJECT MODULE PLACED IN 12864.OBJ
+COMPILER INVOKED BY: D:\软件\KEIL 5\C51\BIN\C51.EXE 12864.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          /**************************************************************
+   3              文件名：12864液晶函数
+   4                作者：陈志同  刘晓哲  张紫豪
+   5            编写时间：2017年5月27日
+   6          **************************************************************/
+   7          
+   8          
+   9          #include <stc15.h>
+  10          #include <intrins.h>
+  11          #include <stdlib.h>
+  12          
+  13          #define uint  unsigned int 
+  14          #define uchar unsigned char
+  15          #define LCD_data P2                             //定义数据管脚口P2
+  16                                                                   //定义12864所用到的管脚口
+  17          sbit LCD_RS=P4^1;                                                       //寄存器选择输入  H数据 L命令
+  18          sbit LCD_RW=P4^2;                                                         //液晶读写控制  H读  L写
+  19          sbit LCD_EN=P4^4;
+  20          sbit LCD_PSB=P4^5;
+  21          
+  22          
+  23          uchar code dis1[]={"餐厅无线呼叫系统"};
+  24          uchar code dis2[]={"1 号餐桌需要服务"};
+  25          uchar code dis3[]={"2 号餐桌需要服务"};
+  26          uchar code dis4[]={"3 号餐桌    点餐"};
+  27          uchar code dis5[]={"3 号餐桌    酒水"};
+  28          uchar code dis6[]={"2 号餐桌    催菜"};
+  29          uchar code dis7[]={"3 号餐桌    买单"};
+  30          
+  31          
+  32          void delay_1ms(uint x)  //12864所用1ms延时
+  33          {
+  34   1              uint a,b;
+  35   1              for(a=0;a<x;a++)
+  36   1              {
+  37   2                      b=0;
+  38   2                      while(b<200)
+  39   2                      {
+  40   3                              _nop_();
+  41   3                              b++;
+  42   3                      }
+  43   2              }
+  44   1      }
+  45          void write_cmd(uchar cmd)               //写1字节指令到12864
+  46          {
+  47   1              LCD_RS=0;
+  48   1              LCD_RW=0;
+  49   1              LCD_EN=0;
+  50   1              P2=cmd;
+  51   1              delay_1ms(5);
+  52   1              LCD_EN=1;
+  53   1              delay_1ms(5);
+  54   1              LCD_EN=0;
+  55   1      }
+C51 COMPILER V9.56.0.0   12864                                                             06/04/2018 19:10:36 PAGE 2   
+
+  56          
+  57          void write_dat(uchar dat)               //写1字节数据到12864
+  58          {
+  59   1              LCD_RS=1;
+  60   1              LCD_RW=0;
+  61   1              LCD_EN=0;
+  62   1              P2=dat;
+  63   1              delay_1ms(5);
+  64   1              LCD_EN=1;
+  65   1              delay_1ms(5);
+  66   1              LCD_EN=0;
+  67   1      }
+  68          
+  69          void lcd_pos(uchar X,uchar Y)//设定显示位置
+  70          {
+  71   1              uchar pos;
+  72   1              if(X==1)
+  73   1                      {X=0x80;}
+  74   1              else if(X==2)
+  75   1                      {X=0x90;}
+  76   1              else if(X==3)
+  77   1                      {X=0x88;}
+  78   1              else if(X==4)
+  79   1                      {X=0x98;}
+  80   1              pos=X+Y;
+  81   1              write_cmd(pos);
+  82   1      }
+  83          
+  84          void lcd_init()            //初始化设定
+  85          {
+  86   1              uchar i;
+  87   1              P4M1=0;P4M0=0;
+  88   1              P2M0=0;P2M1=0;
+  89   1              delay_1ms(5);
+  90   1          LCD_PSB=1;    //并口模式
+  91   1              write_cmd(0x30);
+  92   1              delay_1ms(5);
+  93   1              write_cmd(0x0c);
+  94   1              delay_1ms(5);
+  95   1              write_cmd(0x01);
+  96   1              delay_1ms(5);
+  97   1              i=0;
+  98   1              delay_1ms(10);  
+  99   1              lcd_pos(1,0);
+ 100   1              while(dis1[i]!='\0')
+ 101   1              {
+ 102   2                      write_dat(dis1[i]);
+ 103   2                      i++;
+ 104   2              }
+ 105   1      }
+ 106          
+ 107          /****************************************************************/
+ 108          void lcd_write(unsigned char line, unsigned char code * dis)  reentrant
+ 109          {
+ 110   1          uchar i;
+ 111   1              lcd_pos(line,0);        
+ 112   1              i=0;
+ 113   1              while((dis[i]!='\0')&&(i < 16))
+ 114   1              {
+ 115   2                      write_dat(dis[i]);
+ 116   2                      i++;
+ 117   2              }       
+C51 COMPILER V9.56.0.0   12864                                                             06/04/2018 19:10:36 PAGE 3   
+
+ 118   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    250    ----
+   CONSTANT SIZE    =    119    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

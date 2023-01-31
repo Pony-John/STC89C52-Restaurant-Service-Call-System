@@ -1,0 +1,45 @@
+C51 COMPILER V9.56.0.0   51_UART_SEND                                                      06/04/2018 19:10:37 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE 51_UART_SEND
+OBJECT MODULE PLACED IN 51_uart_send.OBJ
+COMPILER INVOKED BY: D:\软件\KEIL 5\C51\BIN\C51.EXE 51_uart_send.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          /********************************************************************
+   3          文件名  ： 串口发送试验.c
+   4          作者    ： 陈志同  刘晓哲  张紫豪
+   5          时间    ： 2017年5月29日
+   6           描述    :  该文件实现通过串口把数据从单片机发送到单片机，实现单片机之间的通讯。
+   7          ***********************************************************************/
+   8          
+   9          #include<stc15.h>
+  10          #include<intrins.h>
+  11          
+  12          void send(unsigned char p)
+  13          {
+  14   1              
+  15   1          S2BUF = p;
+  16   1          while(!(S2CON & 0x02)){  //如果发送完毕，硬件会置位S2TI
+  17   2            _nop_();   //此句似乎可以去掉
+  18   2          }
+  19   1          S2CON &= 0xFD;  //S2TI清零  
+  20   1          
+  21   1        
+  22   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     14    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,7 @@
+"12864.obj",
+"main.obj",
+"voice.obj",
+"51_uart_receive.obj",
+"51_uart_send.obj" 
+TO "12864" 
+RAMSIZE(256) 
